@@ -3,7 +3,7 @@ import json
 from time import sleep
 from AMuteUsSettings import dcToken, guildID, UIDs
 
-version = "v2024.12.19.0 [{}]"
+version = "v2024.12.19.0"
 unamesList = []
 checking = 0b000
 
