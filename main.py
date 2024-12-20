@@ -211,7 +211,16 @@ def parseDev(cmd):
         print(f"Dev Mode: {dev}")
 
 def parseInfo(cmd):
-    print(f"unfinished cmd={cmd}")
+    global stayGate, version
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                print("Closing AMuteUs...")
+                stayGate = False
+            case "1":
+                print('Command List:\n-----------------------\n0 - mute\n\t00 - all\n\t01 - user\n1 - unmute\n\t10 - all\n\t11 - user\n5 - debug mode\n\t50 - off\n\t51 - on\n6 - program version\n\t60 - exit program\n\t61 - help\n7 - ignored list\n\t70 - reload\n\t71 - add\n8 - list users\n\t80 - list dead & ignored\n\t81 - list alive\n9 - deadlist\n\t90 - clear\n\t91 - add\n.. - exit')
+    else:
+        print(f"AMuteUs {version}")
 
 def parseIgnored(cmd):
     print(f"unfinished cmd={cmd}")
@@ -226,34 +235,14 @@ print("Optimizing User List...")
 reloadIgnoredList()
 print("Starting AMuteUs...")
 print("\n+-----------------------------------------------+\n|    ___    __  ___      __           __  __    |\n|   /   |  /  |/  /_  __/ /____      / / / /____|\n|  / /| | / /|_/ / / / / __/ _ \\    / / / / ___/|\n| / ___ |/ /  / / /_/ / /_/  __/   / /_/ (__  ) |\n|/_/  |_/_/  /_/\\__,_/\\__/\\___/    \\____/____/  |\n+-----------------------------------------------+\nType '61' for command list\nType '60' to exit\n\n\n")
-cmd = ""
-while cmd != "exit":
+stayGate = True
+while stayGate:
     cmd = input("AMuteUs </> ")
     if len(cmd) == 0:
         continue
     commandParser(cmd.split("+"))
     '''
     match cmd:
-        case "10":
-            unmuteAll()
-        case "11":
-            ID = selectUser()
-            if ID != 0:
-                unmuteUser(ID)
-                print(f"{ID} unmuted")
-            else:
-                print("Cancelled")
-        case "01":
-            ID = selectUser()
-            if ID != 0:
-                muteUser(ID)
-                print(f"{ID} muted")
-            else:
-                print("Cancelled")
-        case "0":
-            muteUndead()
-        case "1":
-            unmuteUndead()
         case "91":
             ID = selectUser()
             if ID != 0:
@@ -286,23 +275,6 @@ while cmd != "exit":
             listStatus(2)
         case "81":
             listStatus(1)
-        case "51":
-            dev = True
-            print("Developer Output Enabled")
-        case "50":
-            dev = False
-            print("Developer Output Disabled")
-        case "5":
-            print(f"Dev Mode: {dev}")
-        case "6":
-            print("AMuteUs {version}")
-        case "61":
-            print('Command List:\n-----------------------\n0 - mute\n\t00 - all\n\t01 - user\n1 - unmute\n\t10 - all\n\t11 - user\n5 - debug mode\n\t50 - off\n\t51 - on\n6 - program version\n\t60 - exit program\n\t61 - help\n7 - ignored list\n\t70 - reload\n\t71 - add\n8 - list users\n\t80 - list dead & ignored\n\t81 - list alive\n9 - deadlist\n\t90 - clear\n\t91 - add\n.. - exit')
-        case "60":
-            print("Closing AMuteUs...")
-            cmd = "exit"
-        case "":
-            continue
         case _:
             print("Invalid Command")
         '''
