@@ -48,7 +48,7 @@ print("User Dictionary Created!")
 
 print("Setting Additional Variables...")
 wait = 0.5
-dev = False
+dev = True
 deadList = []
 ignoredList = []
 userIndicator = ["DEAD", "LIVE", "GONE"]
@@ -127,8 +127,8 @@ def userOnline(username):
     i = requests.patch(f"https://discord.com/api/v9/guilds/{guildID}/members/{userDict[username]}", json={"mute": temp['mute']}, headers={'Authorization': dcToken})
     if(dev==True):{print(f"[DEV] {username:-<32} [{i.reason:^4}]")}
     if i.reason == "Bad Request":
-        return True
-    return False
+        return False
+    return True
 
 def reloadIgnoredList():
     global ignoredList
@@ -144,6 +144,18 @@ def commandParser(cmdList):
         match cmd[0]:
             case "0":
                 parseMute(cmd)
+            case "1":
+                parseUnmute(cmd)
+            case "5":
+                parseDev(cmd)
+            case "6":
+                parseInfo(cmd)
+            case "7":
+                parseIgnored(cmd)
+            case "8":
+                parseUser(cmd)
+            case "9":
+                parseDead(cmd)
             case _:
                 print("Invalid Command")
 
@@ -159,12 +171,57 @@ def parseMute(cmd):
                 else:
                     ID = selectUser()
                 if ID != 0:
-                    unmuteUser(ID)
+                    muteUser(ID)
                     print(f"{ID} muted")
                 else:
                     print("Cancelled")
     else:
         muteUndead()
+
+def parseUnmute(cmd):
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                unmuteAll()
+            case "1":
+                if len(cmd) > 2:
+                    UID = int(cmd[2:])
+                    ID = unamesList[UID-1]
+                else:
+                    ID = selectUser()
+                if ID != 0:
+                    unmuteUser(ID)
+                    print(f"{ID} unmuted")
+                else:
+                    print("Cancelled")
+    else:
+        unmuteUndead()
+
+def parseDev(cmd):
+    global dev
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                dev = False
+                print("Developer Output Disabled")
+            case "1":
+                dev = True
+                print("Developer Output Enabled")
+    else:
+        print(f"Dev Mode: {dev}")
+
+def parseInfo(cmd):
+    print(f"unfinished cmd={cmd}")
+
+def parseIgnored(cmd):
+    print(f"unfinished cmd={cmd}")
+
+def parseUser(cmd):
+    print(f"unfinished cmd={cmd}")
+
+def parseDead(cmd):
+    print(f"unfinished cmd={cmd}")
+
 print("Optimizing User List...")
 reloadIgnoredList()
 print("Starting AMuteUs...")
@@ -172,18 +229,27 @@ print("\n+-----------------------------------------------+\n|    ___    __  ___ 
 cmd = ""
 while cmd != "exit":
     cmd = input("AMuteUs </> ")
+    if len(cmd) == 0:
+        continue
     commandParser(cmd.split("+"))
     '''
     match cmd:
         case "10":
             unmuteAll()
-        case "00":
-            muteAll()
         case "11":
-
+            ID = selectUser()
+            if ID != 0:
+                unmuteUser(ID)
+                print(f"{ID} unmuted")
+            else:
+                print("Cancelled")
         case "01":
+            ID = selectUser()
+            if ID != 0:
                 muteUser(ID)
                 print(f"{ID} muted")
+            else:
+                print("Cancelled")
         case "0":
             muteUndead()
         case "1":
