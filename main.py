@@ -208,32 +208,7 @@ while cmd != "exit":
         case "6":
             print("AMuteUs {version}")
         case "61":
-            print('''
-Command List:
------------------------
-0 - mute
-  00 - all
-  01 - user
-1 - unmute
-  10 - all
-  11 - user
-5 - debug mode
-  50 - off
-  51 - on
-6 - program version
-  60 - exit program
-  61 - help
-7 - ignored list
-  70 - reload
-  71 - add
-8 - list users
-  80 - list dead & ignored
-  81 - list alive
-9 - deadlist
-  90 - clear
-  91 - add
-.. - exit
-''')
+            print('Command List:\n-----------------------\n0 - mute\n\t00 - all\n\t01 - user\n1 - unmute\n\t10 - all\n\t11 - user\n5 - debug mode\n\t50 - off\n\t51 - on\n6 - program version\n\t60 - exit program\n\t61 - help\n7 - ignored list\n\t70 - reload\n\t71 - add\n8 - list users\n\t80 - list dead & ignored\n\t81 - list alive\n9 - deadlist\n\t90 - clear\n\t91 - add\n.. - exit')
         case ".." | "60":
             print("Closing AMuteUs...")
             cmd = "exit"
