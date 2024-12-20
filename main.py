@@ -147,94 +147,69 @@ cmd = ""
 while cmd != "exit":
     cmd = input("AMuteUs </> ")
     match cmd:
-        case "ua" | "10":
+        case "10":
             unmuteAll()
-        case "ma" | "00":
+        case "00":
             muteAll()
-        case "uu" | "11":
+        case "11":
             ID = selectUser()
             if ID != 0:
                 unmuteUser(ID)
                 print(f"{ID} muted")
             else:
                 print("Cancelled")
-        case "mu" | "01":
+        case "01":
                 muteUser(ID)
                 print(f"{ID} muted")
-        case "m" | "0":
+        case "0":
             muteUndead()
-        case "u" | "1":
+        case "1":
             unmuteUndead()
-        case "adl" | "91":
+        case "91":
             ID = selectUser()
             if ID != 0:
                 deadList.append(ID)
                 print(f"{ID} added to Deadlist")
             else:
                 print("Cancelled")
-        case "cdl" | "90":
+        case "90":
             for user in deadList:
                 unmuteUser(user)
             deadList = []
             print("Deadlist Cleared")
-        case "qdl" | "9":
+        case "9":
             listStatus(0)
-        case "ail" | "71":
+        case "71":
             ID = selectUser()
             if ID != 0:
                 ignoredList.append(ID)
                 print(f"{ID} added to Ignored List")
             else:
                 print("Cancelled")
-        case "ril" | "70":
+        case "70":
             reloadIgnoredList()
-        case "qil" | "7":
+        case "7":
             listStatus(2)
-        case "l" | "8":
+        case "8":
             listAllUsers()
-        case "lg" | "80":
+        case "80":
             listStatus(0)
             listStatus(2)
-        case "la" | "81":
+        case "81":
             listStatus(1)
-        case "dt" | "51":
+        case "51":
             dev = True
             print("Developer Output Enabled")
-        case "df" | "50":
+        case "50":
             dev = False
             print("Developer Output Disabled")
-        case "d" | "5":
+        case "5":
             print(f"Dev Mode: {dev}")
-        case "v" | "6":
+        case "6":
             print("AMuteUs {version}")
-        case "help" | "61":
+        case "61":
             print('''
-Simple Command List:
--------------------
-u - unmute
-  ua - unmute all
-  uu - unmute user
-m - mute
-  ma - mute all
-  mu - mute user
-d - debug mode
-  df - off
-  dt - on
-v - version
-exit - exit program
-help - help screen
-l - list users
-  lg - list dead & ignored
-  la - list alive
-qdl - query deadlist
-cdl - clear deadlist
-adl - add to deadlist
-qil - query ignoredlist
-cil - clear ignoredlist
-ail - add to ignoredlist
-
-
-Advanced Command List:
+Command List:
 -----------------------
 0 - mute
   00 - all
@@ -257,9 +232,9 @@ Advanced Command List:
 9 - deadlist
   90 - clear
   91 - add
-.. - exit program
+.. - exit
 ''')
-        case "exit" | ".." | "60":
+        case ".." | "60":
             print("Closing AMuteUs...")
             cmd = "exit"
         case "":
