@@ -139,6 +139,32 @@ def reloadIgnoredList():
             ignoredList.append(user)
     print("Ignored List Reloaded")
 
+def commandParser(cmdList):
+    for cmd in cmdList:
+        match cmd[0]:
+            case "0":
+                parseMute(cmd)
+            case _:
+                print("Invalid Command")
+
+def parseMute(cmd):
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                muteAll()
+            case "1":
+                if len(cmd) > 2:
+                    UID = int(cmd[2:])
+                    ID = unamesList[UID-1]
+                else:
+                    ID = selectUser()
+                if ID != 0:
+                    unmuteUser(ID)
+                    print(f"{ID} muted")
+                else:
+                    print("Cancelled")
+    else:
+        muteUndead()
 print("Optimizing User List...")
 reloadIgnoredList()
 print("Starting AMuteUs...")
@@ -146,18 +172,15 @@ print("\n+-----------------------------------------------+\n|    ___    __  ___ 
 cmd = ""
 while cmd != "exit":
     cmd = input("AMuteUs </> ")
+    commandParser(cmd.split("+"))
+    '''
     match cmd:
         case "10":
             unmuteAll()
         case "00":
             muteAll()
         case "11":
-            ID = selectUser()
-            if ID != 0:
-                unmuteUser(ID)
-                print(f"{ID} muted")
-            else:
-                print("Cancelled")
+
         case "01":
                 muteUser(ID)
                 print(f"{ID} muted")
@@ -209,11 +232,12 @@ while cmd != "exit":
             print("AMuteUs {version}")
         case "61":
             print('Command List:\n-----------------------\n0 - mute\n\t00 - all\n\t01 - user\n1 - unmute\n\t10 - all\n\t11 - user\n5 - debug mode\n\t50 - off\n\t51 - on\n6 - program version\n\t60 - exit program\n\t61 - help\n7 - ignored list\n\t70 - reload\n\t71 - add\n8 - list users\n\t80 - list dead & ignored\n\t81 - list alive\n9 - deadlist\n\t90 - clear\n\t91 - add\n.. - exit')
-        case ".." | "60":
+        case "60":
             print("Closing AMuteUs...")
             cmd = "exit"
         case "":
             continue
         case _:
             print("Invalid Command")
+        '''
 
