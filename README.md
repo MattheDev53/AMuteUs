@@ -34,5 +34,53 @@ Each one serves the purpose of selecting which users to Mute or Unmute.
 The commands are structured so that they are grouped into categories.
 
 ```
-cbf rn
+Simple Command List:
+-------------------
+u - unmute
+  ua - unmute all
+  uu - unmute user
+m - mute
+  ma - mute all
+  mu - mute user
+d - debug mode
+  df - off
+  dt - on
+v - version
+exit - exit program
+help - help screen
+l - list users
+  lg - list dead & ignored
+  la - list alive
+qdl - query deadlist
+cdl - clear deadlist
+adl - add to deadlist
+qil - query ignoredlist
+cil - clear ignoredlist
+ail - add to ignoredlist
+
+
+Advanced Command List:
+-----------------------
+0 - mute
+  00 - all
+  01 - user
+1 - unmute
+  10 - all
+  11 - user
+5 - debug mode
+  50 - off
+  51 - on
+6 - program version
+  60 - exit program
+  61 - help
+7 - ignored list
+  70 - reload
+  71 - add
+8 - list users
+  80 - list dead & ignored
+  81 - list alive
+9 - deadlist
+  90 - clear
+  91 - add
+.. - exit program
 ```
