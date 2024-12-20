@@ -20,18 +20,22 @@ The bulk of solutions I've seen require Bots to be added to the server, meaning 
 
 I spent many months before releasing this to GitHub trying to make this program as efficient as possible. The only thing stopping it now is Python being slow (although between you and me I wouldn't be able to tell a difference either way)
 
-### User Statuses
+### User Lists
 
-There are 3 Statuses
-1. LIVE
-2. DEAD
-3. GONE
+The User Lists are a life saver for efficiency, and player death management. There are 2 main lists, The Deadlist and The Ignored List. These help differentiate between people who are
 
-Each one serves the purpose of selecting which users to Mute or Unmute.
+- Gone
+- Alive
+OR
+- Dead
+
+Making it easy to control who speaks and who doesn't
 
 ## Command List
 
 The commands are structured so that they are grouped into categories.
+
+**NOTICE**: This list is changing to be only the numerical commands for efficiency, ease of writing/changing, & added functionality
 
 ```
 Simple Command List:
