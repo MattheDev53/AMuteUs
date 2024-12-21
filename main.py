@@ -1,30 +1,13 @@
 import requests
 import json
 from time import sleep
-from AMuteUsSettings import dcToken, guildID, UIDs
+from AMuteUsSettings import dcToken, guildID, UIDs, setChk
 
 version = "v2024.12.19.0"
 unamesList = []
 checking = 0b000
 
-if dcToken == None:
-    checking += 0b001
-if guildID == None:
-    checking += 0b010
-if UIDs == None:
-    checking += 0b100
-
-if checking != 0b000:
-    print("AMuteUs Settings Missing Settings:")
-    if checking & 0b001 == 0b001:
-        print("  Missing Discord Token")
-    if checking & 0b010 == 0b010:
-        print("  Missing Guild ID")
-    if checking & 0b100 == 0b100:
-        print("  Missing User IDs")
-    print("Please Edit AMuteUsSettings.py and run the script again.")
-    exit()
-print("All Settings Found!")
+setChk()
 # Loop through UIDs to get usernames for easier reading
 for user in range(len(UIDs)):
     print(f"Fetching Username {user+1} of {len(UIDs)}")
