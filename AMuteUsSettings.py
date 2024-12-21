@@ -4,6 +4,22 @@ dcToken = None
 guildID = None
 # List of User IDs you want to mute
 UIDs = None
+# Waiting time between operations
+wait = 0.5
+# Developer mode flag
+dev = True
+# !! LEAVE AS IS !!
+deadList = []
+# !! LEAVE AS IS !!
+ignoredList = []
+# !! LEAVE AS IS !!
+unamesList = []
+# !! LEAVE AS IS !!
+userDict = {}
+# !! LEAVE AS IS !! (or don't, it's not gonna break anything (maybe))
+version = "v2024.12.21.0"
+# Indicators for user status
+userIndicator = ["DEAD", "LIVE", "GONE"]
 
 def setChk():
     """
