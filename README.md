@@ -35,36 +35,7 @@ Making it easy to control who speaks and who doesn't
 
 The commands are structured so that they are grouped into categories.
 
-**NOTICE**: This list is changing to be only the numerical commands for efficiency, ease of writing/changing, & added functionality
-
 ```
-Simple Command List:
--------------------
-u - unmute
-  ua - unmute all
-  uu - unmute user
-m - mute
-  ma - mute all
-  mu - mute user
-d - debug mode
-  df - off
-  dt - on
-v - version
-exit - exit program
-help - help screen
-l - list users
-  lg - list dead & ignored
-  la - list alive
-qdl - query deadlist
-cdl - clear deadlist
-adl - add to deadlist
-qil - query ignoredlist
-cil - clear ignoredlist
-ail - add to ignoredlist
-
-
-Advanced Command List:
------------------------
 0 - mute
   00 - all
   01 - user
@@ -86,5 +57,4 @@ Advanced Command List:
 9 - deadlist
   90 - clear
   91 - add
-.. - exit program
 ```
