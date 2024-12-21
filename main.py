@@ -122,6 +122,13 @@ def reloadIgnoredList():
             ignoredList.append(user)
     print("Ignored List Reloaded")
 
+def clearDeadList():
+    global deadList
+    for user in deadList:
+        unmuteUser(user)
+    deadList = []
+    print("Deadlist Cleared!")
+
 def commandParser(cmdList):
     for cmd in cmdList:
         match cmd[0]:
@@ -209,7 +216,7 @@ def parseIgnored(cmd):
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
-                reloadIgnoredList()
+                clearDeadList()
             case "1":
                 if len(cmd) > 2:
                     UID = int(cmd[2:])
@@ -225,10 +232,29 @@ def parseIgnored(cmd):
         listStatus(2)
 
 def parseUser(cmd):
-    print(f"unfinished cmd={cmd}")
+    if len(cmd) > 1:
+        listStatus(int(cmd[1:]))
+    else:
+        listAllUsers
 
 def parseDead(cmd):
-    print(f"unfinished cmd={cmd}")
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                reloadIgnoredList()
+            case "1":
+                if len(cmd) > 2:
+                    UID = int(cmd[2:])
+                    ID = unamesList[UID-1]
+                else:
+                    ID = selectUser()
+                if ID != 0:
+                    ignoredList.append(ID)
+                    print(f"{ID} added to Deadlist")
+                else:
+                    print("Cancelled")
+    else:
+        listStatus(0)
 
 print("Optimizing User List...")
 reloadIgnoredList()
