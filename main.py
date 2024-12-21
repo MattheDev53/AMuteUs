@@ -223,7 +223,23 @@ def parseInfo(cmd):
         print(f"AMuteUs {version}")
 
 def parseIgnored(cmd):
-    print(f"unfinished cmd={cmd}")
+    if len(cmd) > 1:
+        match cmd[1]:
+            case "0":
+                reloadIgnoredList()
+            case "1":
+                if len(cmd) > 2:
+                    UID = int(cmd[2:])
+                    ID = unamesList[UID-1]
+                else:
+                    ID = selectUser()
+                if ID != 0:
+                    ignoredList.append(ID)
+                    print(f"{ID} added to list")
+                else:
+                    print("Cancelled")
+    else:
+        listStatus(2)
 
 def parseUser(cmd):
     print(f"unfinished cmd={cmd}")
