@@ -1,6 +1,27 @@
 from commands import *
 
-def commandParser(cmdList):
+def commandParser(cmdList: list):
+    """
+    Parses a list of commands and delegates each command to the appropriate parser function.
+
+    Parameters
+    ----------
+    cmdList : list
+        A list of commands, where each command is a string. The first character of each command
+        determines which parser function is called.
+
+    Notes
+    -----
+    - Commands starting with "0" are parsed by `parseMute`.
+    - Commands starting with "1" are parsed by `parseUnmute`.
+    - Commands starting with "5" are parsed by `parseDev`.
+    - Commands starting with "6" are parsed by `parseInfo`.
+    - Commands starting with "7" are parsed by `parseIgnored`.
+    - Commands starting with "8" are parsed by `parseUser`.
+    - Commands starting with "9" are parsed by `parseDead`.
+    - An "Invalid Command" message is printed for unrecognized commands.
+    """
+
     for cmd in cmdList:
         match cmd[0]:
             case "0":
@@ -20,7 +41,21 @@ def commandParser(cmdList):
             case _:
                 print("Invalid Command")
 
-def parseMute(cmd):
+def parseMute(cmd: str):
+    """
+    Parse the mute command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "00", it will mute all users.
+    If the command is "01", it will mute a user selected by the user.
+    If the command is "0" only, it will mute all undead users.
+    """
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
@@ -39,7 +74,21 @@ def parseMute(cmd):
     else:
         muteUndead()
 
-def parseUnmute(cmd):
+def parseUnmute(cmd: str):
+    """
+    Parse the unmute command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "10", it will unmute all users.
+    If the command is "11", it will unmute a user selected by the user.
+    If the command is "1" only, it will unmute all undead users.
+    """
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
@@ -58,7 +107,7 @@ def parseUnmute(cmd):
     else:
         unmuteUndead()
 
-def parseDev(cmd):
+def parseDev(cmd: str):
     global dev
     if len(cmd) > 1:
         match cmd[1]:
@@ -71,7 +120,21 @@ def parseDev(cmd):
     else:
         print(f"Dev Mode: {dev}")
 
-def parseInfo(cmd):
+def parseInfo(cmd: str):
+    """
+    Parse the info command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "60", it will exit the program.
+    If the command is "61", it will print out the command list.
+    If the command is "6" only, it will print out the program's version.
+    """
     global stayGate, version
     if len(cmd) > 1:
         match cmd[1]:
@@ -83,7 +146,21 @@ def parseInfo(cmd):
     else:
         print(f"AMuteUs {version}")
 
-def parseIgnored(cmd):
+def parseIgnored(cmd: str):
+    """
+    Parse the ignored command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "70", it will reload the ignored list.
+    If the command is "71", it will add the user to the ignored list.
+    If the command is "7" only, it will list all users in the ignored list.
+    """
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
@@ -102,13 +179,40 @@ def parseIgnored(cmd):
     else:
         listStatus(2)
 
-def parseUser(cmd):
+def parseUser(cmd: str):
+    """
+    Parse the user command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is only "8", it will list all users.
+    If the command is "8" followed by a number, it will list the users with that status.
+    """
     if len(cmd) > 1:
         listStatus(int(cmd[1:]))
     else:
         listAllUsers
 
-def parseDead(cmd):
+def parseDead(cmd: str):
+    """
+    Parse the dead command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "90", it will clear the deadlist.
+    If the command is "91", it will add the user to the deadlist.
+    If the command is "9" only, it will list all users in the deadlist.
+    """
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
