@@ -66,7 +66,7 @@ def parseMute(cmd: str):
                     ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
-                if ID != 0:
+                if ID != "":
                     muteUser(ID)
                     print(f"{ID} muted")
                 else:
@@ -99,7 +99,7 @@ def parseUnmute(cmd: str):
                     ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
-                if ID != 0:
+                if ID != "":
                     unmuteUser(ID)
                     print(f"{ID} unmuted")
                 else:
@@ -185,7 +185,7 @@ def parseIgnored(cmd: str):
                     ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
-                if ID != 0:
+                if ID != "":
                     ignoredList.append(ID)
                     print(f"{ID} added to list")
                 else:
@@ -237,7 +237,7 @@ def parseDead(cmd: str):
                     ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
-                if ID != 0:
+                if ID != "":
                     ignoredList.append(ID)
                     print(f"{ID} added to Deadlist")
                 else:
