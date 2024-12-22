@@ -272,4 +272,5 @@ def delay(secs: int) -> None:
     secs : int
         The number of seconds to delay the program.
     """
+    print(f"Delaying for {secs} seconds...")
     sleep(secs)
