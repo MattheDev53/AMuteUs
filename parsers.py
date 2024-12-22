@@ -87,7 +87,7 @@ def parseIgnored(cmd):
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
-                clearDeadList()
+                reloadIgnoredList()
             case "1":
                 if len(cmd) > 2:
                     UID = int(cmd[2:])
@@ -112,7 +112,7 @@ def parseDead(cmd):
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
-                reloadIgnoredList()
+                clearDeadList()
             case "1":
                 if len(cmd) > 2:
                     UID = int(cmd[2:])
