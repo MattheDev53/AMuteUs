@@ -14,6 +14,7 @@ def commandParser(cmdList: list) -> None:
     -----
     - Commands starting with "0" are parsed by `parseMute`.
     - Commands starting with "1" are parsed by `parseUnmute`.
+    - Commands starting with "4" are parsed by `parseDelay`.
     - Commands starting with "5" are parsed by `parseDev`.
     - Commands starting with "6" are parsed by `parseInfo`.
     - Commands starting with "7" are parsed by `parseIgnored`.
@@ -28,6 +29,8 @@ def commandParser(cmdList: list) -> None:
                 parseMute(cmd)
             case "1":
                 parseUnmute(cmd)
+            case "4":
+                parseDelay(cmd)
             case "5":
                 parseDev(cmd)
             case "6":
@@ -106,6 +109,25 @@ def parseUnmute(cmd: str):
                     print("Cancelled")
     else:
         unmuteUndead()
+
+def parseDelay(cmd: str) -> None:
+    """
+    Parse the delay command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "4" only, it will delay for 0.5 seconds.
+    If the command is "4?" where ? is a number, it will delay for ? seconds.
+    """
+    hold = 0.5
+    if len(cmd) > 1:
+        hold = float(cmd[1:])
+    delay(hold)
 
 def parseDev(cmd: str):
     """
