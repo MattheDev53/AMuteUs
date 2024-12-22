@@ -260,7 +260,7 @@ def parseDead(cmd: str):
                 else:
                     ID = selectUser()
                 if ID != "":
-                    ignoredList.append(ID)
+                    deadList.append(ID)
                     print(f"{ID} added to Deadlist")
                 else:
                     print("Cancelled")

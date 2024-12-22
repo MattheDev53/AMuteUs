@@ -207,10 +207,10 @@ def getUserStatus(username: str) -> int:
     This function checks if the user is in the dead list or ignored list and returns the appropriate status.
     If the user is not in either list, it returns a status of 1, indicating the user is alive.
     """
-    if username in deadList:
-        return 0
     if username in ignoredList:
         return 2
+    if username in deadList:
+        return 0
     return 1
 
 def userOnline(username: str) -> bool:
