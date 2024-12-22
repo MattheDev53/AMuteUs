@@ -5,8 +5,7 @@ from parsers import commandParser
 
 setChk()
 setup()
-stayGate = True
-while stayGate:
+while True:
     cmd = input("AMuteUs </> ")
     if len(cmd) == 0:
         continue
