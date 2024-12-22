@@ -262,3 +262,14 @@ def clearDeadList() -> None:
         unmuteUser(user)
     deadList = []
     print("Deadlist Cleared!")
+
+def delay(secs: int) -> None:
+    """
+    Delays the program for the specified number of seconds.
+
+    Parameters
+    ----------
+    secs : int
+        The number of seconds to delay the program.
+    """
+    sleep(secs)
