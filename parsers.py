@@ -1,6 +1,6 @@
 from commands import *
 
-def commandParser(cmdList: list):
+def commandParser(cmdList: list) -> None:
     """
     Parses a list of commands and delegates each command to the appropriate parser function.
 
@@ -108,6 +108,20 @@ def parseUnmute(cmd: str):
         unmuteUndead()
 
 def parseDev(cmd: str):
+    """
+    Parse the dev command.
+
+    Parameters
+    ----------
+    cmd : str
+        The command to parse.
+
+    Notes
+    -----
+    If the command is "50", it will disable developer output.
+    If the command is "51", it will enable developer output.
+    If the command is "5" only, it will print out the current state of developer mode.
+    """
     global dev
     if len(cmd) > 1:
         match cmd[1]:
@@ -140,7 +154,7 @@ def parseInfo(cmd: str):
         match cmd[1]:
             case "0":
                 print("Closing AMuteUs...")
-                stayGate = False
+                exit()
             case "1":
                 print('Command List:\n-----------------------\n0 - mute\n\t00 - all\n\t01 - user\n1 - unmute\n\t10 - all\n\t11 - user\n5 - debug mode\n\t50 - off\n\t51 - on\n6 - program version\n\t60 - exit program\n\t61 - help\n7 - ignored list\n\t70 - reload\n\t71 - add\n8 - list users\n\t80 - list dead & ignored\n\t81 - list alive\n9 - deadlist\n\t90 - clear\n\t91 - add')
     else:
