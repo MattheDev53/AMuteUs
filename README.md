@@ -52,8 +52,7 @@ The commands are structured so that they are grouped into categories.
   70 - reload
   71 - add
 8 - list users
-  80 - list dead & ignored
-  81 - list alive
+  8* - list users in the list #
 9 - deadlist
   90 - clear
   91 - add
