@@ -197,6 +197,7 @@ def parseIgnored(cmd: str):
     If the command is "71", it will add the user to the ignored list.
     If the command is "7" only, it will list all users in the ignored list.
     """
+    global ignoredList
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
@@ -209,7 +210,7 @@ def parseIgnored(cmd: str):
                     ID = selectUser()
                 if ID != "":
                     ignoredList.append(ID)
-                    print(f"{ID} added to list")
+                    print(f"{ID} added to Ignored List")
                 else:
                     print("Cancelled")
     else:
@@ -249,6 +250,7 @@ def parseDead(cmd: str):
     If the command is "91", it will add the user to the deadlist.
     If the command is "9" only, it will list all users in the deadlist.
     """
+    global deadList
     if len(cmd) > 1:
         match cmd[1]:
             case "0":
@@ -266,3 +268,6 @@ def parseDead(cmd: str):
                     print("Cancelled")
     else:
         listStatus(0)
+
+if __name__ == "__main__":
+    print("This file is not intended to be run directly. Please run main.py instead.")

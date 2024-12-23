@@ -274,3 +274,6 @@ def delay(secs: int) -> None:
     """
     print(f"Delaying for {secs} seconds...")
     sleep(secs)
+
+if __name__ == "__main__":
+    print("This file is not intended to be run directly. Please run main.py instead.")
