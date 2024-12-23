@@ -181,9 +181,9 @@ def listStatus(statusCode: int) -> None:
     index, name, and status if the user's status matches the given status code. The output is
     formatted to align the indices and usernames.
     """
-    for user in range(len(unamesList)):
-        if getUserStatus(unamesList[user]) == statusCode:
-            print(f"[{user+1:->3}] {unamesList[user]:-<32} [{userIndicator[getUserStatus(unamesList[user])]:^4}]") 
+    for index, user in enumerate(unamesList):
+        if getUserStatus(user) == statusCode:
+            print(f"[{index+1:->3}] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]") 
 
 def getUserStatus(username: str) -> int:
     """
@@ -247,7 +247,8 @@ def reloadIgnoredList() -> None:
     """
     global ignoredList
     print("Reloading Ignored List...")
-    ignoredList = []
+    for i in range(len(ignoredList)):
+        ignoredList.pop()
     for user in userDict:
         if userOnline(user) == False:
             ignoredList.append(user)
@@ -258,9 +259,9 @@ def clearDeadList() -> None:
     Clears the dead list by unmuting all users in the list and then emptying the list.
     """
     global deadList
-    for user in deadList:
-        unmuteUser(user)
-    deadList = []
+    print("Clearing Deadlist...")
+    for i in range(len(deadList)):
+        unmuteUser(deadList.pop())
     print("Deadlist Cleared!")
 
 def delay(secs: int) -> None:
