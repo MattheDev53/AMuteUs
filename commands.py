@@ -181,9 +181,10 @@ def listStatus(statusCode: int) -> None:
     index, name, and status if the user's status matches the given status code. The output is
     formatted to align the indices and usernames.
     """
+    print(f"{userIndicator[statusCode]} Users:")
     for index, user in enumerate(unamesList):
         if getUserStatus(user) == statusCode:
-            print(f"[{index+1:->3}] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]") 
+            print(f"[{index+1:->3}] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")
 
 def getUserStatus(username: str) -> int:
     """
