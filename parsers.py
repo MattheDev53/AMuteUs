@@ -65,8 +65,9 @@ def parseMute(cmd: str):
                 muteAll()
             case "1":
                 if len(cmd) > 2:
-                    UID = int(cmd[2:])
-                    ID = unamesList[UID-1]
+                    if int(cmd[2:]) <= len(unamesList):
+                        UID = int(cmd[2:])
+                        ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
                 if ID != "":
@@ -98,8 +99,9 @@ def parseUnmute(cmd: str):
                 unmuteAll()
             case "1":
                 if len(cmd) > 2:
-                    UID = int(cmd[2:])
-                    ID = unamesList[UID-1]
+                    if int(cmd[2:]) <= len(unamesList):
+                        UID = int(cmd[2:])
+                        ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
                 if ID != "":
@@ -204,8 +206,9 @@ def parseIgnored(cmd: str):
                 reloadIgnoredList()
             case "1":
                 if len(cmd) > 2:
-                    UID = int(cmd[2:])
-                    ID = unamesList[UID-1]
+                    if int(cmd[2:]) <= len(unamesList):
+                        UID = int(cmd[2:])
+                        ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
                 if ID != "":
@@ -257,8 +260,9 @@ def parseDead(cmd: str):
                 clearDeadList()
             case "1":
                 if len(cmd) > 2:
-                    UID = int(cmd[2:])
-                    ID = unamesList[UID-1]
+                    if int(cmd[2:]) <= len(unamesList):
+                        UID = int(cmd[2:])
+                        ID = unamesList[UID-1]
                 else:
                     ID = selectUser()
                 if ID != "":
