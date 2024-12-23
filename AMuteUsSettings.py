@@ -7,7 +7,7 @@ UIDs = None
 # Waiting time between operations
 wait = 0.5
 # Developer mode flag
-dev = True
+dev = False
 # !! LEAVE AS IS !!
 deadList = []
 # !! LEAVE AS IS !!
@@ -17,7 +17,7 @@ unamesList = []
 # !! LEAVE AS IS !!
 userDict = {}
 # !! LEAVE AS IS !! (or don't, it's not gonna break anything (maybe))
-version = "v2024.12.23.3"
+version = "v2024.12.23.4"
 # Indicators for user status
 userIndicator = ["DEAD", "LIVE", "GONE"]
 
