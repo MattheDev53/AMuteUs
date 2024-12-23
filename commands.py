@@ -148,8 +148,8 @@ def listAllUsers() -> None:
     index, name, and status. The status is determined using the `getUserStatus` function and is
     displayed using the `userIndicator` list. The output is formatted to align the indices and usernames.
     """
-    for user in range(len(unamesList)):
-        print(f"[{user+1:->3}] {unamesList[user]:-<32} [{userIndicator[getUserStatus(unamesList[user])]:^4}]")
+    for index, user in enumerate(unamesList):
+        print(f"[{index+1:->3}] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")
 
 def selectUser() -> str:
     """
