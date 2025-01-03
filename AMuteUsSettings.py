@@ -1,9 +1,9 @@
 # Your Token
-dcToken = None
+dcToken: str = None
 # The ID of the Server you want to mute
-guildID = None
+guildID: list = None
 # List of User IDs you want to mute
-UIDs = None
+UIDs: list = None
 # Waiting time between operations
 wait = 0.5
 # Developer mode flag
@@ -17,7 +17,7 @@ unamesList = []
 # !! LEAVE AS IS !!
 userDict = {}
 # !! LEAVE AS IS !! (or don't, it's not gonna break anything (maybe))
-version = "v2024.12.23.4"
+version = "v2025.1.2.2"
 # Indicators for user status
 userIndicator = ["DEAD", "LIVE", "GONE"]
 
