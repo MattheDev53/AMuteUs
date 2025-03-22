@@ -21,7 +21,7 @@ def setup() -> None:
 
     print("Creating User Dictionary...")
     userDict = {}.fromkeys(unamesList)
-    
+
 
     print("Adding UIDs to User Dictionary...")
     index = 0
@@ -30,16 +30,28 @@ def setup() -> None:
         userDict[where] = UIDs[index]
         index += 1
     print("User Dictionary Created!")
-    
+
     print("Optimizing User List...")
     reloadIgnoredList()
     print("Starting AMuteUs...")
     print("\n+-----------------------------------------------+\n|    ___    __  ___      __           __  __    |\n|   /   |  /  |/  /_  __/ /____      / / / /____|\n|  / /| | / /|_/ / / / / __/ _ \\    / / / / ___/|\n| / ___ |/ /  / / /_/ / /_/  __/   / /_/ (__  ) |\n|/_/  |_/_/  /_/\\__,_/\\__/\\___/    \\____/____/  |\n+-----------------------------------------------+\nType '61' for command list\nType '60' to exit\n\n\n")
 
+def devPrint(msg: str, devLevel: str = "DEV") -> None:
+    """
+    Prints a message if developer mode is enabled.
+
+    Parameters
+    ----------
+    msg : str
+        The message to print.
+    """
+    if dev:
+        print(f"[{devLevel}] {msg}")
+
 def unmuteAll() -> None:
     """
     Unmutes all users in the user dictionary.
-    
+
     Notes
     -----
     This function loops through the user dictionary and calls `unmuteUser` on each user. It then waits for `wait` seconds before continuing.
@@ -53,7 +65,7 @@ def unmuteAll() -> None:
 def muteAll() -> None:
     """
     Mutes all users in the user dictionary.
-    
+
     Notes
     -----
     This function loops through the user dictionary and calls `muteUser` on each user. It then waits for `wait` seconds before continuing.
@@ -81,7 +93,7 @@ def unmuteUndead() -> None:
             unmuteUser(user)
             sleep(wait)
         else:
-            if(dev==True):{print(f"[DEV] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")}
+            devPrint(f"{user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")
     print("Unmuted Undead")
 
 def muteUndead() -> None:
@@ -101,7 +113,7 @@ def muteUndead() -> None:
             muteUser(user)
             sleep(wait)
         else:
-            if(dev==True):{print(f"[DEV] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")}
+            devPrint(f"[DEV] {user:-<32} [{userIndicator[getUserStatus(user)]:^4}]")
     print("Muted Undead")
 
 def unmuteUser(username: str) -> None:
@@ -119,7 +131,7 @@ def unmuteUser(username: str) -> None:
     it will print a developer message indicating the request's result.
     """
     i = requests.patch(f"https://discord.com/api/v9/guilds/{guildID}/members/{userDict[username]}", json={"mute": False}, headers={'Authorization': dcToken})
-    if(dev==True):{print(f"[DEV] {username:-<32} [{i.reason:^4}]")}
+    devPrint(f"[DEV] {username:-<32} [{i.reason:^4}]")
 
 def muteUser(username: str) -> None:
     """
@@ -136,7 +148,7 @@ def muteUser(username: str) -> None:
     it will print a developer message indicating the request's result.
     """
     i = requests.patch(f"https://discord.com/api/v9/guilds/{guildID}/members/{userDict[username]}", json={"mute": True}, headers={'Authorization': dcToken})
-    if(dev==True):{print(f"[DEV] {username:-<32} [{i.reason:^4}]")}
+    devPrint(f"[DEV] {username:-<32} [{i.reason:^4}]")
 
 def listAllUsers() -> None:
     """
@@ -154,7 +166,7 @@ def listAllUsers() -> None:
 def selectUser() -> str:
     """
     Lists all users and asks the user to select a user number.
-    
+
     Notes
     -----
     Returns a blank string if the user enters in a non-digit character.
@@ -236,7 +248,7 @@ def userOnline(username: str) -> bool:
     i = requests.get(f"https://discord.com/api/v9/guilds/{guildID}/members/{userDict[username]}", headers={'Authorization': dcToken})
     temp = json.loads(i.text)
     i = requests.patch(f"https://discord.com/api/v9/guilds/{guildID}/members/{userDict[username]}", json={"mute": temp['mute']}, headers={'Authorization': dcToken})
-    if(dev==True):{print(f"[DEV] {username:-<32} [{i.reason:^4}]")}
+    devPrint(f"[DEV] {username:-<32} [{i.reason:^4}]")
     if i.reason == "Bad Request":
         return False
     return True

@@ -17,7 +17,7 @@ unamesList = []
 # !! LEAVE AS IS !!
 userDict = {}
 # !! LEAVE AS IS !! (or don't, it's not gonna break anything (maybe))
-version = "v2025.1.2.2"
+version = "v2025.3.21.0"
 # Indicators for user status
 userIndicator = ["DEAD", "LIVE", "GONE"]
 
