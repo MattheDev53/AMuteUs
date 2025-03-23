@@ -1,1 +1,4 @@
 AMuteUsSettings.py
+__pycache__/
+.direnv/
+.vscode/
